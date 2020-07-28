@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\ReservationProjectData.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.EF\ReservationProjectData.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

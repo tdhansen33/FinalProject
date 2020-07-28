@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReservationFinalProject.DATA.MVC
+namespace ReservationFinalProject.DATA.EF
 {
     using System;
     using System.Data.Entity;
