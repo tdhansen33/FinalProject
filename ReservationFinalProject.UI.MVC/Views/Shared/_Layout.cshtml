@@ -23,6 +23,13 @@
         </header>
 
         <!-- Nav -->
+        <span onclick="openNav()">Admin</span>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href=@Url.Action("Index", "RolesAdmin")>Roles</a>
+            <a href=@Url.Action("Index", "UsersAdmin")>Users</a>
+        </div>
+
         <nav id="nav">
             <ul class="links">
                 <li><a href=@Url.Action("Index", "Home")>Home</a></li>
@@ -30,8 +37,13 @@
                 <li><a href=@Url.Action("Index", "OwnerAssets")>Owner Assets</a></li>
                 <li><a href=@Url.Action("Index", "Reservations")>Reservations</a></li>
                 <li><a href=@Url.Action("Index", "UserDetails")>User Details</a></li>
-                @Html.Partial("_LoginPartial")
+                @if (User.IsInRole("Admin"))
+                {
+                    <li><a href=@Url.Action("Index", "RolesAdmin")>Roles</a></li>
+                    <li><a href=@Url.Action("Index", "UsersAdmin")>Users</a></li>
+                }
             </ul>
+            @Html.Partial("_LoginPartial")
         </nav>
 
         <!-- Main -->

@@ -1,11 +1,32 @@
 ﻿@using Microsoft.AspNet.Identity
+@using ReservationFinalProject.DATA.EF;
 @if (Request.IsAuthenticated) {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })) {
         @Html.AntiForgeryToken()
 
+        #region Custom user greeting
+        //Connection to database
+        ReservationProjectEntities rtx = new ReservationProjectEntities();
+
+        //Getting current userID and storing in a variable
+        string currentUserID = User.Identity.GetUserId();
+
+        //Retrieving details
+        UserDetail currentUser = rtx.UserDetails.Where(x => x.UserID == currentUserID).FirstOrDefault();
+
+        //Default value
+        string userName = "Guest";
+
+        //If not null
+        if (currentUser != null)
+        {
+            userName = currentUser.FirstName;
+        }
+        #endregion
+
         <ul class="links nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                @Html.ActionLink("Hello " + userName + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
