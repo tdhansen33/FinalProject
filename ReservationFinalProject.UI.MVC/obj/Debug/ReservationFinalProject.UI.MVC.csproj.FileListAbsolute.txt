@@ -103,3 +103,6 @@ C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinal
 C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.UI.MVC\obj\Debug\ReservationFinalProject.UI.MVC.csproj.CopyComplete
 C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.UI.MVC\obj\Debug\ReservationFinalProject.UI.MVC.dll
 C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.UI.MVC\obj\Debug\ReservationFinalProject.UI.MVC.pdb
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.UI.MVC\bin\ReservationFinalProject.DATA.MVC.dll
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.UI.MVC\bin\ReservationFinalProject.DATA.MVC.pdb
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.UI.MVC\bin\ReservationFinalProject.DATA.MVC.dll.config

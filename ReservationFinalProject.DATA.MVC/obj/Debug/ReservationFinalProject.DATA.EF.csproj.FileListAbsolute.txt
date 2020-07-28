@@ -1,0 +1,12 @@
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\bin\Debug\ReservationFinalProject.DATA.MVC.dll.config
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\bin\Debug\ReservationFinalProject.DATA.MVC.dll
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\bin\Debug\ReservationFinalProject.DATA.MVC.pdb
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\bin\Debug\EntityFramework.dll
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\bin\Debug\EntityFramework.xml
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\obj\Debug\ReservationFinalProject.DATA.EF.csprojAssemblyReference.cache
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\obj\Debug\ReservationFinalProject.DATA.EF.csproj.CoreCompileInputs.cache
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\obj\Debug\ReservationFinalProject.DATA.EF.csproj.CopyComplete
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\obj\Debug\ReservationFinalProject.DATA.MVC.dll
+C:\Users\student\Desktop\Visual Studio 2017\Projects\12_PROJECT\ReservationFinalProject\src\ReservationFinalProject.DATA.MVC\obj\Debug\ReservationFinalProject.DATA.MVC.pdb

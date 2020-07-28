@@ -25,9 +25,12 @@
         <!-- Nav -->
         <nav id="nav">
             <ul class="links">
-                <li><a href=@Url.Action("Index", "Home")>This is Massively</a></li>
-                <li><a href=@Url.Action("About", "Home")>Generic Page</a></li>
-                <li><a href="elements.html">Elements Reference</a></li>
+                <li><a href=@Url.Action("Index", "Home")>Home</a></li>
+                <li><a href=@Url.Action("Index", "Locations")>Locations</a></li>
+                <li><a href=@Url.Action("Index", "OwnerAssets")>Owner Assets</a></li>
+                <li><a href=@Url.Action("Index", "Reservations")>Reservations</a></li>
+                <li><a href=@Url.Action("Index", "UserDetails")>User Details</a></li>
+                @Html.Partial("_LoginPartial")
             </ul>
         </nav>
 
