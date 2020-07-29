@@ -11,19 +11,20 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.AssetPhoto)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.AssetPhoto)*@
+            <img src="@Url.Content("~/Content/images/Photos/" + Model.AssetPhoto)" alt="@Model.AssetName" class="image"/>
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.AssetName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.AssetName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AssetPhoto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AssetPhoto)
         </dd>
 
         <dt>

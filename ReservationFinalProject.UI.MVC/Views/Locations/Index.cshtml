@@ -4,9 +4,9 @@
     ViewBag.Title = "Locations";
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div>
+    @Html.ActionLink("Add Location", "Create", "Locations", null, new { @class = "button" })
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -31,12 +31,14 @@
             <th></th>
         </tr>
     </thead>
-    @foreach (var item in Model)
-    {
-        <tbody>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LocationName)
+                    <a href="@Url.Action("Details", new { id=item.LocationID })">
+                        @Html.DisplayFor(modelItem => item.LocationName)
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Address)
@@ -55,13 +57,12 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.LocationID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.LocationID }) |
+                    @*@Html.ActionLink("Details", "Details", new { id = item.LocationID }) |*@
                     @Html.ActionLink("Delete", "Delete", new { id = item.LocationID })
                 </td>
             </tr>
-        </tbody>
-    }
-
+        }
+    </tbody>
 </table>
 
 @section Scripts{

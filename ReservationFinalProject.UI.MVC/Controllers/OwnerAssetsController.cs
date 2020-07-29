@@ -48,10 +48,36 @@ namespace ReservationFinalProject.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OwnerAssetID,AssetName,OwnerID,AssetPhoto,SpecialNotes,IsActive,DateAdded")] OwnerAsset ownerAsset)
+        public ActionResult Create([Bind(Include = "OwnerAssetID,AssetName,OwnerID,AssetPhoto,SpecialNotes,IsActive,DateAdded")] OwnerAsset ownerAsset, HttpPostedFileBase assetImage)
         {
             if (ModelState.IsValid)
             {
+                //default image
+                string imageName = "noImage.png";
+
+                //if file was sent
+                if (assetImage != null)
+                {
+                    imageName = assetImage.FileName;
+
+                    string ext = imageName.Substring(imageName.LastIndexOf('.'));
+
+                    string[] goodExts = { ".jpg", ".jpeg", ".png", ".gif" };
+
+                    //if extension is valid
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                        assetImage.SaveAs(Server.MapPath("~/Content/images/Photos/" + imageName + ext));
+                    }
+                    else
+                    {
+                        imageName = "noImage.png";
+                    }
+                }
+
+                ownerAsset.AssetPhoto = imageName;
+
+
                 db.OwnerAssets.Add(ownerAsset);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,10 +108,27 @@ namespace ReservationFinalProject.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OwnerAssetID,AssetName,OwnerID,AssetPhoto,SpecialNotes,IsActive,DateAdded")] OwnerAsset ownerAsset)
+        public ActionResult Edit([Bind(Include = "OwnerAssetID,AssetName,OwnerID,AssetPhoto,SpecialNotes,IsActive,DateAdded")] OwnerAsset ownerAsset, HttpPostedFileBase assetImage)
         {
             if (ModelState.IsValid)
             {
+                if (assetImage != null)
+                {
+                    string imageName = assetImage.FileName;
+
+                    string ext = imageName.Substring(imageName.LastIndexOf('.'));
+
+                    string[] goodExts = { ".jpg", ".jpeg", ".png", ".gif" };
+
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                        assetImage.SaveAs(Server.MapPath("~/Content/images/Photos/" + imageName));
+
+                        ownerAsset.AssetPhoto = imageName;
+                    }
+                }
+
+
                 db.Entry(ownerAsset).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
