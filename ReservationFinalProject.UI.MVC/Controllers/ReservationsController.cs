@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using ReservationFinalProject.DATA.EF;
 
 namespace ReservationFinalProject.UI.MVC.Controllers
@@ -17,8 +18,18 @@ namespace ReservationFinalProject.UI.MVC.Controllers
         // GET: Reservations
         public ActionResult Index()
         {
-            var reservations = db.Reservations.Include(r => r.Location).Include(r => r.OwnerAsset);
-            return View(reservations.ToList());
+            if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+            {
+                var reservations = db.Reservations.Include(r => r.Location).Include(r => r.OwnerAsset);
+                return View(reservations.ToList());
+            }
+            else
+            {
+                string currentUser = User.Identity.GetUserId();
+
+                var reservations = db.Reservations.Where(x => x.OwnerAsset.OwnerID == currentUser);
+                return View(reservations.ToList());
+            }
         }
 
         // GET: Reservations/Details/5
@@ -53,9 +64,20 @@ namespace ReservationFinalProject.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Reservations.Add(reservation);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var place = db.Locations.Where(x => x.LocationID == reservation.LocationID).FirstOrDefault();
+                var dateCount = db.Reservations.Where(x => x.ReservationDate == reservation.ReservationDate && x.LocationID == reservation.LocationID).Count();
+
+                int reserveLimit = place.ReservationLimit;
+                if (reserveLimit > dateCount)
+                {
+                    db.Reservations.Add(reservation);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View("LimitExceeded");
+                }
             }
 
             ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
