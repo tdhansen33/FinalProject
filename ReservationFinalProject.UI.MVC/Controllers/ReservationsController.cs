@@ -50,9 +50,20 @@ namespace ReservationFinalProject.UI.MVC.Controllers
         // GET: Reservations/Create
         public ActionResult Create()
         {
-            ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName");
-            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetName");
-            return View();
+            if (User.IsInRole("Admin"))
+            {
+                ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName");
+                ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetName");
+                return View();
+            }
+            else
+            {
+                string currentUser = User.Identity.GetUserId();
+
+                ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName");
+                ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets.Where(x => x.OwnerID == currentUser), "OwnerAssetID", "AssetName");
+                return View();
+            }
         }
 
         // POST: Reservations/Create
@@ -97,9 +108,20 @@ namespace ReservationFinalProject.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
-            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetName", reservation.OwnerAssetID);
-            return View(reservation);
+           if (User.IsInRole("Admin"))
+            {
+                ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName");
+                ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetName");
+                return View(reservation);
+            }
+            else
+            {
+                string currentUser = User.Identity.GetUserId();
+
+                ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName");
+                ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets.Where(x => x.OwnerID == currentUser), "OwnerAssetID", "AssetName");
+                return View(reservation);
+            }
         }
 
         // POST: Reservations/Edit/5

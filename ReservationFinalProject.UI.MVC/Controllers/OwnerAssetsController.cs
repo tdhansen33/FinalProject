@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using ReservationFinalProject.DATA.EF;
 
 namespace ReservationFinalProject.UI.MVC.Controllers
@@ -17,8 +18,18 @@ namespace ReservationFinalProject.UI.MVC.Controllers
         // GET: OwnerAssets
         public ActionResult Index()
         {
-            var ownerAssets = db.OwnerAssets.Include(o => o.UserDetail);
-            return View(ownerAssets.ToList());
+            if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+            {
+                var ownerAssets = db.OwnerAssets.Include(o => o.UserDetail);
+                return View(ownerAssets.ToList());
+            }
+            else
+            {
+                string currentUser = User.Identity.GetUserId();
+
+                var ownerAssets = db.OwnerAssets.Where(x => x.OwnerID == currentUser);
+                return View(ownerAssets.ToList());
+            }
         }
 
         // GET: OwnerAssets/Details/5
