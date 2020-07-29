@@ -10,6 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="~/Content/assets/css/main.css" />
+    <link href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
     <noscript><link rel="stylesheet" href="~/Content/assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
@@ -108,7 +109,7 @@
         </div>
 
     </div>
-    @RenderSection("scripts", required: false)
+
     <!-- Scripts -->
     <script src="~/Content/assets/js/jquery.min.js"></script>
     <script src="~/Content/assets/js/jquery.scrollex.min.js"></script>
@@ -117,6 +118,8 @@
     <script src="~/Content/assets/js/breakpoints.min.js"></script>
     <script src="~/Content/assets/js/util.js"></script>
     <script src="~/Content/assets/js/main.js"></script>
+    <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    @RenderSection("scripts", required: false)
 
     <!-- Highlighted Nav -->
     <script>

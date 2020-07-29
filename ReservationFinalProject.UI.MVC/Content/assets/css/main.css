@@ -2386,19 +2386,16 @@ input, select, textarea {
 		padding: 0.75rem 1rem;
 	}
 
-	input[type="checkbox"],
-	input[type="radio"] {
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
-		display: block;
-		float: left;
-		margin-right: -2rem;
-		opacity: 0;
-		width: 1rem;
-		z-index: -1;
-	}
+input[type="checkbox" i] {
+    background-color: initial;
+    cursor: default;
+    appearance: checkbox;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
+}
+
 
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
@@ -2410,12 +2407,11 @@ input, select, textarea {
 			font-family: "Merriweather", Georgia, serif;
 			text-transform: none;
 			font-weight: 300;
-			padding-left: 2.8rem;
 			padding-right: 1rem;
 			position: relative;
 		}
 
-			input[type="checkbox"] + label:before,
+			/*input[type="checkbox"] + label:before,
 			input[type="radio"] + label:before {
 				-moz-osx-font-smoothing: grayscale;
 				-webkit-font-smoothing: antialiased;
@@ -2452,7 +2448,7 @@ input, select, textarea {
 
 	input[type="checkbox"] + label:before {
 		border-radius: 0;
-	}
+	}*/
 
 	input[type="radio"] + label:before {
 		border-radius: 100%;

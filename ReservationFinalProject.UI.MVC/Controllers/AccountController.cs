@@ -154,10 +154,10 @@ namespace ReservationFinalProject.UI.MVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
+                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    //ViewBag.Link = callbackUrl;
 
                     #region Dealing with custom user details
                     UserDetail newUserDeets = new UserDetail();
@@ -170,7 +170,9 @@ namespace ReservationFinalProject.UI.MVC.Controllers
                     db.SaveChanges();
                     #endregion
 
-                    return View("DisplayEmail");
+                    UserManager.AddToRole(user.Id, "Client");
+
+                    return RedirectToAction("Login");
                 }
                 AddErrors(result);
             }
