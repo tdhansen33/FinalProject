@@ -78,7 +78,9 @@ namespace ReservationFinalProject.UI.MVC.Controllers
                     //if extension is valid
                     if (goodExts.Contains(ext.ToLower()))
                     {
-                        assetImage.SaveAs(Server.MapPath("~/Content/images/Photos/" + imageName + ext));
+                        imageName = Guid.NewGuid() + ext;
+                        assetImage.SaveAs(Server.
+                        MapPath("~/Content/images/Photos/" + imageName));
                     }
                     else
                     {
@@ -88,6 +90,19 @@ namespace ReservationFinalProject.UI.MVC.Controllers
 
                 ownerAsset.AssetPhoto = imageName;
 
+                //Dynamically grabs current logged in user and sets it as the OwnerID if the user is not an Admin
+                if (!User.IsInRole("Admin"))
+                {
+                    string currentUser = User.Identity.GetUserId();
+
+                    ownerAsset.OwnerID = currentUser;
+                }
+
+                //Automatically sets the IsActive property to true
+                ownerAsset.IsActive = true;
+
+                //Dynamically adds the current date
+                ownerAsset.DateAdded = DateTime.Now;
 
                 db.OwnerAssets.Add(ownerAsset);
                 db.SaveChanges();
@@ -133,12 +148,26 @@ namespace ReservationFinalProject.UI.MVC.Controllers
 
                     if (goodExts.Contains(ext.ToLower()))
                     {
+                        imageName = Guid.NewGuid() + ext;
                         assetImage.SaveAs(Server.MapPath("~/Content/images/Photos/" + imageName));
 
                         ownerAsset.AssetPhoto = imageName;
                     }
                 }
 
+                //Dynamically grabs current logged in user and sets it as the OwnerID if the user is not an Admin
+                if (!User.IsInRole("Admin"))
+                {
+                    string currentUser = User.Identity.GetUserId();
+
+                    ownerAsset.OwnerID = currentUser;
+                }
+
+                //Automatically sets the IsActive property to true
+                ownerAsset.IsActive = true;
+
+                //Dynamically adds the current date
+                ownerAsset.DateAdded = DateTime.Now;
 
                 db.Entry(ownerAsset).State = EntityState.Modified;
                 db.SaveChanges();

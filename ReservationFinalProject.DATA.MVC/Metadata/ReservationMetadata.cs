@@ -54,7 +54,6 @@ namespace ReservationFinalProject.DATA.EF
         public string AssetName { get; set; }
     
         [Display(Name = "Photo")]
-        [StringLength(50, ErrorMessage = "*** Max 50 Characters ***")]
         public string AssetPhoto { get; set; }
     
         [Display(Name = "Notes")]

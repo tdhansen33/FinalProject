@@ -4,11 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div>
+    @Html.ActionLink("Add User", "Create", "UsersAdmin", null, new { @class = "button" })
+</div>
 <table class="table">
     <thead>
         <tr>

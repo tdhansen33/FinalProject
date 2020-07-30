@@ -10,7 +10,7 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.image{
-    width: 15%;
-    height: 15%;
+.customImage{
+    width: 10em;
+    height: 10em;
 }
