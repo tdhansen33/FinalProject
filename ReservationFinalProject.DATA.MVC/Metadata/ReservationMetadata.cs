@@ -48,8 +48,8 @@ namespace ReservationFinalProject.DATA.EF
     
     public class OwnerAssetMetadata
     {
-        [Display(Name = "Name")]
-        [Required(ErrorMessage = "*** Name is Required ***")]
+        [Display(Name = "Child")]
+        [Required(ErrorMessage = "*** Child Name is Required ***")]
         [StringLength(50, ErrorMessage = "*** Max 50 Characters ***")]
         public string AssetName { get; set; }
     
@@ -72,6 +72,7 @@ namespace ReservationFinalProject.DATA.EF
     
     public class ReservationMetadata
     {
+        [Display(Name = "Date")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public System.DateTime ReservationDate { get; set; }
     }
@@ -81,7 +82,7 @@ namespace ReservationFinalProject.DATA.EF
     [MetadataType(typeof(UserDetailMetadata))]
     public partial class UserDetail
     {
-        [Display(Name = "Name")]
+        [Display(Name = "Parent")]
         public string FullName
         {
             get { return FirstName + " " + LastName; }

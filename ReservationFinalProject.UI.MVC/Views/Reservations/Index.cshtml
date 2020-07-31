@@ -7,17 +7,20 @@
 <div>
     @Html.ActionLink("Add Reservation", "Create", "Reservations", null, new { @class = "button" })
 </div>
-<table class="table">
+<table class="table display">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ReservationDate)
+                @Html.DisplayNameFor(model => model.OwnerAsset.AssetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerAsset.UserDetail.FullName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Location.LocationName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OwnerAsset.AssetName)
+                @Html.DisplayNameFor(model => model.ReservationDate)
             </th>
             <th></th>
         </tr>
@@ -27,17 +30,22 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ReservationDate)
+                    <a href="@Url.Action("Details", new { id=item.ReservationID })">
+                        @Html.DisplayFor(modelItem => item.OwnerAsset.AssetName)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerAsset.UserDetail.FullName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Location.LocationName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.OwnerAsset.AssetName)
+                    @Html.DisplayFor(modelItem => item.ReservationDate)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.ReservationID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ReservationID }) |
+                    @*@Html.ActionLink("Details", "Details", new { id = item.ReservationID }) |*@
                     @Html.ActionLink("Delete", "Delete", new { id = item.ReservationID })
                 </td>
             </tr>
@@ -48,7 +56,9 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
-            $('.table').DataTable();
+            $('.table').DataTable({
+                responsive: true
+            })      
         });
     </script>
 }

@@ -1,4 +1,7 @@
 ﻿using System.Web.Mvc;
+using System.Net;
+using System.Net.Mail;
+using ReservationFinalProject.UI.MVC.Models;
 
 namespace ReservationFinalProject.UI.MVC.Controllers
 {
@@ -19,12 +22,39 @@ namespace ReservationFinalProject.UI.MVC.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Contact()
+        [HttpPost]
+        public JsonResult ContactAjax(ContactViewModel cvm)
         {
-            ViewBag.Message = "Your contact page.";
+          
+            //Create the message
+            string message = $"<strong>{cvm.Name}</strong><br/><strong>{cvm.Subject}</strong><br/><strong><em>{cvm.Email}</em></strong><br/><br/>{cvm.Message}";
 
-            return View();
+            //Create the MailMessage object
+            MailMessage msg = new MailMessage("no-reply@tylerdhansen.com", "hansen.tyler3@outlook.com", $"{System.DateTime.Now.Date} - {cvm.Subject}", message);
+
+            //Customize MailMessage
+            msg.Priority = MailPriority.High;
+            msg.IsBodyHtml = true;
+
+            //Allows you to reply directly to the person who filled out the form
+            msg.ReplyToList.Add(cvm.Email);
+
+            //Create SmtpClient
+            SmtpClient client = new SmtpClient("mail.tylerdhansen.com");
+
+            //Verify Credentials for client
+            client.Credentials = new NetworkCredential("no-reply@tylerdhansen.com", "P@ssw0rd");
+
+            //Attempt to send email
+            try
+            {
+                client.Send(msg);
+            }
+            catch (System.Exception)
+            {
+                ViewBag.Error = "I'm sorry, there was an error handling your request. Please try again.";
+            }
+            return Json(cvm);
         }
     }
 }

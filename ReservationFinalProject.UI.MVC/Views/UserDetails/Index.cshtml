@@ -7,7 +7,7 @@
 <div>
     @Html.ActionLink("Add Parent", "Create", "UserDetails", null, new { @class = "button" })
 </div>
-<table class="table">
+<table class="table display">
     <thead>
         <tr>
             <th>
@@ -42,7 +42,9 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
-            $('.table').DataTable();
+            $('.table').DataTable({
+                responsive: true
+            })
         });
     </script>
 }

@@ -15,7 +15,9 @@
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     @*<link rel="stylesheet" href="/resources/demos/style.css">*@
-    <link href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
     <noscript><link rel="stylesheet" href="~/Content/assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
@@ -25,7 +27,7 @@
 
         <!-- Header -->
         <header id="header">
-            <a href=@Url.Action("Index", "Home") class="logo">Massively</a>
+            <a href=@Url.Action("Index", "Home") class="logo">Out-World Space Camp</a>
         </header>
 
         <!-- Nav -->
@@ -33,9 +35,15 @@
             <ul class="links">
                 <li><a href=@Url.Action("Index", "Home")>Home</a></li>
                 <li><a href=@Url.Action("Index", "Locations")>Locations</a></li>
-                <li><a href=@Url.Action("Index", "OwnerAssets")>Owner Assets</a></li>
-                <li><a href=@Url.Action("Index", "Reservations")>Reservations</a></li>
-                <li><a href=@Url.Action("Index", "UserDetails")>User Details</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a href=@Url.Action("Index", "OwnerAssets")>Children</a></li>
+                    <li><a href=@Url.Action("Index", "Reservations")>Reservations</a></li>
+                    if (User.IsInRole("Client") || User.IsInRole("Admin"))
+                    {
+                        <li><a href=@Url.Action("Index", "UserDetails")>Account Details</a></li>
+                    }
+                }
                 @if (User.IsInRole("Admin"))
                 {
                     <li><a href=@Url.Action("Index", "RolesAdmin")>Roles</a></li>
@@ -52,58 +60,62 @@
 
         <!-- Footer -->
         <footer id="footer">
-            <section>
-                <form method="post" action="#">
-                    <div class="fields">
-                        <div class="field">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" />
-                        </div>
-                        <div class="field">
-                            <label for="email">Email</label>
-                            <input type="text" name="email" id="email" />
-                        </div>
-                        <div class="field">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <ul class="actions">
-                        <li><input type="submit" value="Send Message" /></li>
-                    </ul>
-                </form>
-            </section>
             <section class="split contact">
                 <section class="alt">
-                    <h3>Address</h3>
-                    <p>
-                        1234 Somewhere Road #87257<br />
-                        Nashville, TN 00000-0000
-                    </p>
+                    <h2>Contact Us</h2>
                 </section>
                 <section>
                     <h3>Phone</h3>
-                    <p><a href="#">(000) 000-0000</a></p>
+                    <p><a href="#">(816) 555-5555</a></p>
                 </section>
                 <section>
                     <h3>Email</h3>
-                    <p><a href="#">info@untitled.tld</a></p>
+                    <p><a href="#">info@spacecamp.org</a></p>
                 </section>
                 <section>
                     <h3>Social</h3>
                     <ul class="icons alt">
-                        <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-                        <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
                         <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
                     </ul>
                 </section>
+            </section>
+            <section>
+                @*<form method="post">
+                        <div class="fields">
+                            <div class="field">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" />
+                            </div>
+                            <div class="field">
+                                <label for="email">Email</label>
+                                <input type="text" name="email" id="email" />
+                            </div>
+                            <div class="field">
+                                <label for="subject">Subject</label>
+                                <input type="text" name="subject" id="subject" />
+                            </div>
+                            <div class="field">
+                                <label for="message">Message</label>
+                                <textarea name="message" id="message" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="Send Message" /></li>
+                        </ul>
+                    </form>*@
+                <div id="contactForm">
+                    @Html.Partial("ContactAjax", new ReservationFinalProject.UI.MVC.Models.ContactViewModel())
+                </div>
+                <div id="contactConfirm">
+                    @Html.Partial("EmailConfirmation", new ReservationFinalProject.UI.MVC.Models.ContactViewModel())
+                </div>
             </section>
         </footer>
 
         <!-- Copyright -->
         <div id="copyright">
-            <ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+            <ul><li>&copy; @DateTime.Now.Year</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li><li>Converted By: Tyler D. Hansen</li></ul>
         </div>
 
     </div>
@@ -117,10 +129,13 @@
     <script src="~/Content/assets/js/util.js"></script>
     <script src="~/Content/assets/js/main.js"></script>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>*@
+
+    @*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>*@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
     @RenderSection("scripts", required: false)
 
     <script>
@@ -138,6 +153,22 @@
         //Datepicker
         $(function () {
             $("#datepicker").datepicker({ minDate: 0, maxDate: "+1Y" });
+        });
+
+        //Contact Form
+        $("#ContactCreateForm").submit(function (e) {
+            var formData = $(this).serializeArray();
+            e.preventDefault();
+            $.ajax({
+                url: '@Url.Action("ContactAjax", "Shared")',
+                type: 'POST',
+                data: formData,
+                datatype: 'json',
+                success: function (data) {
+                    $("#contactForm").hide();
+                    $("#contactConfirm").show();
+                }
+            });
         });
     </script>
 </body>

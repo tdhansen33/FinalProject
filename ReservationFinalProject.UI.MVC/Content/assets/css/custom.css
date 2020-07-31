@@ -14,3 +14,15 @@
     width: 10em;
     height: 10em;
 }
+
+textarea{
+    resize: none;
+}
+
+#contactConfirm{
+    display: none;
+}
+
+.contactPadding{
+    padding-top: 5px;
+}

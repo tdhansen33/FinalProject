@@ -7,7 +7,7 @@
 <div>
     @Html.ActionLink("Add Asset", "Create", "OwnerAssets", null, new { @class = "button" })
 </div>
-<table class="table">
+<table class="table display">
     <thead>
         <tr>
             <th>
@@ -37,7 +37,7 @@
             <tr>
                 <td>
                     @*@Html.DisplayFor(modelItem => item.AssetPhoto)*@
-                    <img src="@Url.Content("~/Content/images/Photos/" + item.AssetPhoto)" alt="@item.AssetName" class="customImage"/>
+                    <img src="@Url.Content("~/Content/images/Photos/" + item.AssetPhoto)" alt="@item.AssetName" class="customImage" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.AssetName)
@@ -66,7 +66,9 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
-            $('.table').DataTable();
+            $('.table').DataTable({
+                responsive: true
+            })
         });
     </script>
 }
