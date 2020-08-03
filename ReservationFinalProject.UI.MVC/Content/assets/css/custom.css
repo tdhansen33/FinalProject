@@ -6,7 +6,7 @@
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    padding: 0 7px 5px 7px;
+    padding: 5px 7px 5px 7px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
@@ -25,4 +25,73 @@ textarea{
 
 .contactPadding{
     padding-top: 5px;
+}
+
+.editButton{
+    transition-duration: 0.4s;
+    background-color:white;
+    color:black;
+    border: 2px solid #030387;
+    padding: 4px 4px 4px 4px;
+}
+
+.editButton:hover{
+    background-color: #030387;
+    color: white !important;
+}
+
+.deleteButton {
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    border: 2px solid #FA2B19;
+    padding: 4px 4px 4px 4px;
+}
+
+.deleteButton:hover {
+    background-color: #FA2B19;
+    color: white !important;
+}
+
+.saveButton {
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    border: 2px solid #52B524 !important;
+    padding: 2px 1em 2px 1em;
+    cursor: pointer;
+    box-shadow: none !important;
+}
+
+.saveButton:hover {
+    background-color: #52B524;
+    color: white !important;
+}
+
+.backButton{
+    transition-duration: 0.4s;
+    background-color:white;
+    color:black;
+    border: 2px solid #A43BF5;
+    padding: 4px 4px 4px 4px;
+}
+
+.backButton:hover{
+    background-color: #A43BF5;
+    color: white !important;
+}
+
+.confirmDelete {
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    border: 2px solid #FA2B19 !important;
+    padding: 2px 4px 2px 4px;
+    cursor: pointer;
+    box-shadow: none !important;
+}
+
+.confirmDelete:hover {
+    background-color: #FA2B19;
+    color: white !important;
 }

@@ -60,12 +60,12 @@
                     @Html.DisplayFor(modelItem => item.UserDetail.FirstName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }, new { @class = "editButton" })
                     @if (User.IsInRole("Admin") || User.IsInRole("Client"))
                     {
                         @:|
                         @*@Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |*@
-                        @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID }, new { @class = "deleteButton" })
                     }
                 </td>
             </tr>

@@ -35,12 +35,12 @@
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.UserID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UserID }, new { @class = "editButton" })
                     @*@Html.ActionLink("Details", "Details", new { id = item.UserID }) |*@
                     @if (User.IsInRole("Admin"))
                     {
                         @: |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @class = "deleteButton" })
                     }
                 </td>
             </tr>
