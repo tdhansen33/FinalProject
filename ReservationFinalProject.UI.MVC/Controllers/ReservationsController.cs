@@ -135,6 +135,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 db.Entry(reservation).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

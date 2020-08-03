@@ -74,6 +74,7 @@ namespace ReservationFinalProject.DATA.EF
     {
         [Display(Name = "Date")]
         [DisplayFormat(DataFormatString = "{0:d}")]
+        [Required(ErrorMessage = "*** A date is required ***")]
         public System.DateTime ReservationDate { get; set; }
     }
     #endregion

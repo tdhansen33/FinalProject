@@ -93,7 +93,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
                 ownerAsset.AssetPhoto = imageName;
 
                 //Dynamically grabs current logged in user and sets it as the OwnerID if the user is not an Admin
-                if (!User.IsInRole("Admin"))
+                if (User.IsInRole("Client"))
                 {
                     string currentUser = User.Identity.GetUserId();
 
@@ -158,18 +158,18 @@ namespace ReservationFinalProject.UI.MVC.Controllers
                 }
 
                 //Dynamically grabs current logged in user and sets it as the OwnerID if the user is not an Admin
-                if (!User.IsInRole("Admin"))
+                if (User.IsInRole("Client"))
                 {
                     string currentUser = User.Identity.GetUserId();
 
                     ownerAsset.OwnerID = currentUser;
                 }
 
-                //Automatically sets the IsActive property to true
-                ownerAsset.IsActive = true;
-
-                //Dynamically adds the current date
-                ownerAsset.DateAdded = DateTime.Now;
+                if (!User.IsInRole("Admin"))
+                {
+                    //Automatically sets the IsActive property to true
+                    ownerAsset.IsActive = true;
+                }
 
                 db.Entry(ownerAsset).State = EntityState.Modified;
                 db.SaveChanges();
