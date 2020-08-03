@@ -4,9 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<div>
-    @Html.ActionLink("Add Reservation", "Create", "Reservations", null, new { @class = "button" })
-</div>
+@if (User.IsInRole("Admin") || User.IsInRole("Client"))
+{
+    <div>
+        @Html.ActionLink("Add Reservation", "Create", "Reservations", null, new { @class = "button" })
+    </div>
+}
 <table class="table display">
     <thead>
         <tr>
@@ -44,9 +47,13 @@
                     @Html.DisplayFor(modelItem => item.ReservationDate)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ReservationID }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ReservationID }) 
                     @*@Html.ActionLink("Details", "Details", new { id = item.ReservationID }) |*@
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ReservationID })
+                    @if (User.IsInRole("Admin") || User.IsInRole("Client"))
+                    {
+                        @:|
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ReservationID })
+                    }
                 </td>
             </tr>
         }
@@ -58,7 +65,7 @@
         $(document).ready(function () {
             $('.table').DataTable({
                 responsive: true
-            })      
+            })
         });
     </script>
 }

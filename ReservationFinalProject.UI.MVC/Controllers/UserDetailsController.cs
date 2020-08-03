@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using ReservationFinalProject.DATA.EF;
 
 namespace ReservationFinalProject.UI.MVC.Controllers
 {
+    [Authorize(Roles = "Admin, Client")]
     public class UserDetailsController : Controller
     {
         private ReservationProjectEntities db = new ReservationProjectEntities();
@@ -17,7 +19,16 @@ namespace ReservationFinalProject.UI.MVC.Controllers
         // GET: UserDetails
         public ActionResult Index()
         {
-            return View(db.UserDetails.ToList());
+            if (User.IsInRole("Admin"))
+            {
+                return View(db.UserDetails.ToList());
+            }
+            else
+            {
+                string currentUser = User.Identity.GetUserId();
+                var userDetails = db.UserDetails.Where(x => x.UserID == currentUser);
+                return View(userDetails.ToList());
+            }
         }
 
         // GET: UserDetails/Details/5
@@ -35,6 +46,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
             return View(userDetail);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: UserDetails/Create
         public ActionResult Create()
         {
@@ -89,6 +101,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
             return View(userDetail);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: UserDetails/Delete/5
         public ActionResult Delete(string id)
         {

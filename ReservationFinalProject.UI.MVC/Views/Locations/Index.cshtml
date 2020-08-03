@@ -4,9 +4,12 @@
     ViewBag.Title = "Locations";
 }
 
-<div>
-    @Html.ActionLink("Add Location", "Create", "Locations", null, new { @class = "button" })
-</div>
+@if (User.IsInRole("Admin"))
+{
+    <div>
+        @Html.ActionLink("Add Location", "Create", "Locations", null, new { @class = "button" })
+    </div>
+}
 <table class="table display">
     <thead>
         <tr>
@@ -28,7 +31,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.ReservationLimit)
             </th>
-            <th></th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th></th>}
         </tr>
     </thead>
     <tbody>
@@ -55,11 +60,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.ReservationLimit)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.LocationID }) |
-                    @*@Html.ActionLink("Details", "Details", new { id = item.LocationID }) |*@
-                    @Html.ActionLink("Delete", "Delete", new { id = item.LocationID })
-                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.LocationID }) |
+                        @*@Html.ActionLink("Details", "Details", new { id = item.LocationID }) |*@
+                        @Html.ActionLink("Delete", "Delete", new { id = item.LocationID })
+                    </td>
+                }
             </tr>
         }
     </tbody>

@@ -4,9 +4,12 @@
     ViewBag.Title = "Owner Assets";
 }
 
-<div>
-    @Html.ActionLink("Add Asset", "Create", "OwnerAssets", null, new { @class = "button" })
-</div>
+@if (User.IsInRole("Admin") || User.IsInRole("Client"))
+{
+    <div>
+        @Html.ActionLink("Add Child", "Create", "OwnerAssets", null, new { @class = "button" })
+    </div>
+}
 <table class="table display">
     <thead>
         <tr>
@@ -37,7 +40,9 @@
             <tr>
                 <td>
                     @*@Html.DisplayFor(modelItem => item.AssetPhoto)*@
-                    <img src="@Url.Content("~/Content/images/Photos/" + item.AssetPhoto)" alt="@item.AssetName" class="customImage" />
+                    <a href="@Url.Action("Details", new { id = item.OwnerAssetID })">
+                        <img src="@Url.Content("~/Content/images/Photos/" + item.AssetPhoto)" alt="@item.AssetName" class="customImage" />
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.AssetName)
@@ -55,9 +60,13 @@
                     @Html.DisplayFor(modelItem => item.UserDetail.FirstName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID })
+                    @if (User.IsInRole("Admin") || User.IsInRole("Client"))
+                    {
+                        @:|
+                        @*@Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |*@
+                        @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
+                    }
                 </td>
             </tr>
         }

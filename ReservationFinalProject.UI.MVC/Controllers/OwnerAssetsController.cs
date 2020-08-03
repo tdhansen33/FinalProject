@@ -11,6 +11,7 @@ using ReservationFinalProject.DATA.EF;
 
 namespace ReservationFinalProject.UI.MVC.Controllers
 {
+    [Authorize]
     public class OwnerAssetsController : Controller
     {
         private ReservationProjectEntities db = new ReservationProjectEntities();
@@ -20,7 +21,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
         {
             if (User.IsInRole("Admin") || User.IsInRole("Employee"))
             {
-                var ownerAssets = db.OwnerAssets.Include(o => o.UserDetail);
+                var ownerAssets = db.OwnerAssets.Include(x => x.UserDetail);
                 return View(ownerAssets.ToList());
             }
             else
@@ -47,6 +48,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
             return View(ownerAsset);
         }
 
+        [Authorize(Roles = "Client, Admin")]
         // GET: OwnerAssets/Create
         public ActionResult Create()
         {
@@ -177,6 +179,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
             return View(ownerAsset);
         }
 
+        [Authorize(Roles = "Client, Admin")]
         // GET: OwnerAssets/Delete/5
         public ActionResult Delete(int? id)
         {

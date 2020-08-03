@@ -11,6 +11,7 @@ using ReservationFinalProject.DATA.EF;
 
 namespace ReservationFinalProject.UI.MVC.Controllers
 {
+    [Authorize]
     public class ReservationsController : Controller
     {
         private ReservationProjectEntities db = new ReservationProjectEntities();
@@ -47,6 +48,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
             return View(reservation);
         }
 
+        [Authorize(Roles = "Client, Admin")]
         // GET: Reservations/Create
         public ActionResult Create()
         {
@@ -142,6 +144,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
             return View(reservation);
         }
 
+        [Authorize(Roles = "Client, Admin")]
         // GET: Reservations/Delete/5
         public ActionResult Delete(int? id)
         {

@@ -35,6 +35,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
             return View(location);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Locations/Create
         public ActionResult Create()
         {
@@ -58,6 +59,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
             return View(location);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Locations/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -89,6 +91,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
             return View(location);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Locations/Delete/5
         public ActionResult Delete(int? id)
         {
