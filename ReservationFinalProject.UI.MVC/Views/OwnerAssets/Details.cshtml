@@ -1,67 +1,44 @@
 ﻿@model ReservationFinalProject.DATA.EF.OwnerAsset
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.AssetName + " " + "Details";
 }
 
-<h2>Details</h2>
+<h2 class="centerText">@ViewBag.Title</h2>
 
-<div>
-    <h4>OwnerAsset</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AssetPhoto)
-        </dt>
-
-        <dd>
-            @*@Html.DisplayFor(model => model.AssetPhoto)*@
-            <img src="@Url.Content("~/Content/images/Photos/" + Model.AssetPhoto)" alt="@Model.AssetName" class="customImage"/>
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AssetName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AssetName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SpecialNotes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SpecialNotes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateAdded)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateAdded)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserDetail.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserDetail.FirstName)
-        </dd>
-
-    </dl>
+<div id="crudContainer">
+    <div id="childHeader">
+        <h3>@Html.DisplayFor(model => model.AssetName)</h3>
+        <div class="clearfix"></div>
+    </div>
+    <div class="row">
+        <div id="leftInfo">
+            <p>
+                <img src="@Url.Content("~/Content/images/Photos/" + Model.AssetPhoto)" alt="@Model.AssetName" class="customImage" />
+            </p>
+            <p>
+                <strong>@Html.DisplayNameFor(model => model.UserDetail.FullName):</strong>
+                @Html.DisplayFor(model => model.UserDetail.FullName)
+            </p>
+            <p>
+                <strong>@Html.DisplayNameFor(model => model.IsActive):</strong>
+                @Html.DisplayFor(model => model.IsActive)
+            </p>
+            <p>
+                <strong>@Html.DisplayNameFor(model => model.DateAdded):</strong>
+                @Html.DisplayFor(model => model.DateAdded)
+            </p>
+        </div>
+        <div id="rightInfo">
+            <fieldset>
+                <legend>@Html.DisplayNameFor(model => model.SpecialNotes)</legend>
+                <p>@Html.DisplayFor(model => model.SpecialNotes)</p>
+            </fieldset>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="rightFooter">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerAssetID }, new { @class = "editButton" })
+        @Html.ActionLink("Back", "Index", null, new { @class = "backButton" })
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerAssetID }, new { @class = "editButton" }) |
-    @Html.ActionLink("Back", "Index", null, new { @class = "backButton" })
-</p>

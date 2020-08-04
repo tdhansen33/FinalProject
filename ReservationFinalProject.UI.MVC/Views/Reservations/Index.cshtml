@@ -7,7 +7,7 @@
 @if (User.IsInRole("Admin") || User.IsInRole("Client"))
 {
     <div>
-        @Html.ActionLink("Add Reservation", "Create", "Reservations", null, new { @class = "button" })
+        @Html.ActionLink("Add Reservation", "Create", "Reservations", null, new { @class = "createButton" })
     </div>
 }
 <table class="table display">

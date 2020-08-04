@@ -1,34 +1,24 @@
 ﻿@model ReservationFinalProject.DATA.EF.UserDetail
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Account Details";
 }
 
-<h2>Details</h2>
+<h2 class="centerText">@ViewBag.Title</h2>
 
-<div>
-    <h4>UserDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
+<div id="crudContainer">
+    <div class="row">
+        <p>
+            <strong>@Html.DisplayNameFor(model => model.FirstName):</strong>
             @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
+        </p>
+        <p>
+            <strong>@Html.DisplayNameFor(model => model.LastName):</strong>
             @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-    </dl>
+        </p>
+    </div>
+    <div id="rightFooter">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }, new { @class = "editButton" })
+        @Html.ActionLink("Back", "Index", null, new { @class = "backButton" })
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }, new { @class = "editButton" }) |
-    @Html.ActionLink("Back", "Index", null, new { @class = "backButton" })
-</p>

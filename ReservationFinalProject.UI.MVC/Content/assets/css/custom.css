@@ -1,13 +1,18 @@
-﻿.button {
-    display: inline-block;
-    background-color: #030387;
-    border-radius: 5em;
+﻿.centerText{
+    text-align:center;
+}
+
+.createButton {
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 1em;
+}
+
+.createButton:hover{
+    background-color: black;
     color: white !important;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 5px 7px 5px 7px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .customImage{
@@ -68,7 +73,7 @@ textarea{
     color: white !important;
 }
 
-.backButton{
+/*.backButton{
     transition-duration: 0.4s;
     background-color:white;
     color:black;
@@ -79,7 +84,7 @@ textarea{
 .backButton:hover{
     background-color: #A43BF5;
     color: white !important;
-}
+}*/
 
 .confirmDelete {
     transition-duration: 0.4s;
@@ -94,4 +99,89 @@ textarea{
 .confirmDelete:hover {
     background-color: #FA2B19;
     color: white !important;
+}
+
+#crudContainer{
+    border: 3px solid black;
+    /*box-shadow: 0.5em 0.5em gray;*/
+    padding: 1em;
+    margin: 0 5% 0 5%;
+}
+
+#leftInfo{
+    float: left;
+    width: 50%
+}
+
+#rightInfo fieldset{
+    border: 2px solid black;
+    border-radius: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    width: 40%;
+}
+
+#rightInfo legend{
+    border: 2px solid black;
+    border-radius: 1em;
+    padding-left: .5em;
+    width: 62%;
+}
+
+#leftInfo fieldset {
+    border: 2px solid black;
+    border-radius: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    width: 70%;
+}
+
+#leftInfo legend {
+    border: 2px solid black;
+    border-radius: 1em;
+    padding-left: .5em;
+    width: 65%;
+}
+
+#rightFooter{
+    margin-left: 83%;
+    text-align: right;
+}
+
+#rightFooter div{
+    padding: 5px;
+}
+
+#leftFooter {
+    text-align: left;
+}
+
+#leftFooter div {
+    padding: 5px;
+}
+
+@media screen and (max-width: 600px){
+    #rightInfo legend {
+        border: 2px solid black;
+        border-radius: 1em;
+        padding-left: .5em;
+        width: 100%;
+    }
+
+    #leftInfo legend {
+        border: 2px solid black;
+        border-radius: 1em;
+        padding-left: .5em;
+        width: 100%;
+    }
+}
+
+fieldset p{
+    word-wrap: break-word;
+    width: 200px
+}
+
+div .col-md-10{
+    padding-bottom: 10px;
+    padding-top: 0px;
 }

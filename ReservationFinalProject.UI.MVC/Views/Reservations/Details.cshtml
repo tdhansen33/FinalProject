@@ -1,42 +1,28 @@
 ﻿@model ReservationFinalProject.DATA.EF.Reservation
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Reservation Details";
 }
 
-<h2>Details</h2>
+<h2 class="centerText">@ViewBag.Title</h2>
 
-<div>
-    <h4>Reservation</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ReservationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ReservationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location.LocationName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location.LocationName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerAsset.AssetName)
-        </dt>
-
-        <dd>
+<div id="crudContainer">
+    <div class="row">
+        <p>
+            <strong>@Html.DisplayNameFor(model => model.OwnerAsset.AssetName):</strong>
             @Html.DisplayFor(model => model.OwnerAsset.AssetName)
-        </dd>
-
-    </dl>
+        </p>
+        <p>
+            <strong>@Html.DisplayNameFor(model => model.Location.LocationName):</strong>
+            @Html.DisplayFor(model => model.Location.LocationName)
+        </p>
+        <p>
+            <strong>@Html.DisplayNameFor(model => model.ReservationDate):</strong>
+            @Html.DisplayFor(model => model.ReservationDate)
+        </p>
+    </div>
+    <div id="rightFooter">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ReservationID }, new { @class = "editButton" })
+        @Html.ActionLink("Back", "Index", null, new { @class = "backButton" })
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ReservationID }, new { @class = "editButton" }) |
-    @Html.ActionLink("Back", "Index", null, new { @class = "backButton" })
-</p>

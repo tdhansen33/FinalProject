@@ -4,12 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-@if (User.IsInRole("Admin"))
-{
-    <div>
-        @Html.ActionLink("Add Parent", "Create", "UserDetails", null, new { @class = "button" })
-    </div>
-}
 <table class="table display">
     <thead>
         <tr>
