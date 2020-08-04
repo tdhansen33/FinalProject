@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ReservationFinalProject.DATA.EF.Reservation>
+
+@{
+    ViewBag.Title = "Limit Exceeded";
+}
+
+<h2 class="centerText">@ViewBag.Title</h2>
+
+<div id="crudContainer">
+    <p>
+        We're sorry, the location you attempted to place your reservation at already has too many reservations for the selected date. Please select another location or date.
+    </p>
+    <div id="rightFooter">
+        @Html.ActionLink("Back", "Index", null, new { @class = "backButton" })
+    </div>
+</div>
