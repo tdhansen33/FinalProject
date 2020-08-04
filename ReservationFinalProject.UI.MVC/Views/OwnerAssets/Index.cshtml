@@ -29,7 +29,7 @@
                 @Html.DisplayNameFor(model => model.DateAdded)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserDetail.FirstName)
+                @Html.DisplayNameFor(model => model.UserDetail.FullName)
             </th>
             <th></th>
         </tr>
@@ -57,7 +57,7 @@
                     @Html.DisplayFor(modelItem => item.DateAdded)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UserDetail.FirstName)
+                    @Html.DisplayFor(modelItem => item.UserDetail.FullName)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }, new { @class = "editButton" })

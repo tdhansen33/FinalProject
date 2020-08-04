@@ -59,8 +59,11 @@ namespace ReservationFinalProject.DATA.EF
         [Display(Name = "Notes")]
         [StringLength(300, ErrorMessage = "*** Max 300 Characters ***")]
         public string SpecialNotes { get; set; }
+
+        [Display(Name = "Active?")]
         public bool IsActive { get; set; }
     
+        [Display(Name = "Date Added")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public System.DateTime DateAdded { get; set; }
     }

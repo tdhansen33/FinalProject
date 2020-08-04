@@ -224,6 +224,7 @@
     <Content Include="Content\images\pic09.jpg" />
     <Content Include="Content\images\ryan-hutton-Jztmx9yqjBw-unsplash.jpg" />
     <Content Include="Content\images\Space.jpg" />
+    <Content Include="Content\images\wei-pan-Ta0A1miYZKc-unsplash.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -406,8 +407,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
