@@ -77,6 +77,7 @@
                     <ul class="icons alt">
                         <li><a href="https://www.linkedin.com/in/tyler-hansen-1370a01a8/" target="_blank" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
                         <li><a href="https://github.com/tdhansen33" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                        <li><a href="~/Content/images/TylerHansenDocumentation.pdf" target="_blank">Documentation</a></li>
                     </ul>
                 </section>
             </section>
@@ -160,7 +161,7 @@
             var formData = $(this).serializeArray();
             e.preventDefault();
             $.ajax({
-                url: '@Url.Action("ContactAjax", "Shared")',
+                url: '@Url.Action("ContactAjax", "Home")',
                 type: 'POST',
                 data: formData,
                 datatype: 'json',

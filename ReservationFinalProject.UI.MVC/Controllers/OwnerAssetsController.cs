@@ -92,7 +92,7 @@ namespace ReservationFinalProject.UI.MVC.Controllers
 
                 ownerAsset.AssetPhoto = imageName;
 
-                //Dynamically grabs current logged in user and sets it as the OwnerID if the user is not an Admin
+                //Dynamically grabs current logged in user and sets it as the OwnerID if the user is a client
                 if (User.IsInRole("Client"))
                 {
                     string currentUser = User.Identity.GetUserId();
